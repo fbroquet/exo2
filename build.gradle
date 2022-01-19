@@ -31,3 +31,20 @@ test {
     // Use junit platform for unit tests
     useJUnitPlatform()
 }
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test']
+        }
+    }
+}
+
+
+
