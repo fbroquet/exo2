@@ -1,5 +1,6 @@
-package com.tetras.librarie;
+package application;
 
+import application.Librairie.*;
 import java.util.List;
 
 public abstract class MegaPokemon extends Pokemon {
