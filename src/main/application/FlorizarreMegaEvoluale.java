@@ -1,5 +1,6 @@
-package com.tetras.librarie;
+package application;
 
+import application.Librairie.*;
 public class FlorizarreMegaEvoluale extends Florizarre implements IMegaEvoluable{
     
     @Override

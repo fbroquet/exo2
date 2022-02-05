@@ -1,4 +1,4 @@
-package com.tetras.librarie;
+package application.Librairie;
 
 public interface IEvoluable {
 

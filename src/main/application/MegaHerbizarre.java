@@ -1,5 +1,6 @@
-package com.tetras.librarie;
+package application;
 
+import application.Librairie.*;
 import java.util.Arrays;
 
 public class MegaHerbizarre extends MegaPokemon {

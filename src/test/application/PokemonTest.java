@@ -1,5 +1,6 @@
-package com.tetras.librarie;
+package application;
 
+import application.Librairie.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

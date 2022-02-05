@@ -1,4 +1,4 @@
-package com.tetras.librarie;
+package application;
 
 public interface IMegaEvoluable {
 
