@@ -1,4 +1,69 @@
 @startuml Pokemon
 
+package "Librairie" #DDDDDD {
+    abstract class Pokemon {
+        - Types : Type[]
+        getTypes() : Type[]
+    }
+
+    interface IEvoluable {
+        evoluer() : Pokemon
+    }
+
+    enum Type {
+    }
+
+    class Bulbizarre {
+    }
+
+    class Herbizarre {
+    }
+
+    class Florizarre {
+    }
+}
+
+abstract class MegaPokemon {
+}
+
+interface IMegaEvoluable {
+    evoluer() : MegaPokemon
+}
+
+class MegaFlorizarre {
+}
+
+class FlorizarreAdapter {
+}
+
+abstract class ObscurDecorator{
+    - PokemonClassique :Pokemon
+    purifier() : Pokemon
+    - TypesObsur(Type[]) : List[]
+    
+}
+
+class PokemonObscur {
+    PokemonObscur(Pokemon)
+}
+
+Pokemon ..|> IEvoluable : uses
+Pokemon ..|> Type: uses
+Pokemon <|-- Bulbizarre
+Pokemon <|-- Herbizarre
+Pokemon <|-- Florizarre
+IEvoluable <|.. Bulbizarre
+IEvoluable <|.. Herbizarre
+IEvoluable <|.. Florizarre
+
+MegaPokemon ..|> IMegaEvoluable : uses
+Pokemon <|-- MegaPokemon
+IMegaEvoluable <|..FlorizarreAdapter
+Florizarre <|--FlorizarreAdapter
+MegaPokemon <|--MegaFlorizarre
+
+Pokemon <|--ObscurDecorator
+ObscurDecorator <|--PokemonObscur
+
 
 @enduml

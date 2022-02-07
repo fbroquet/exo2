@@ -30,7 +30,7 @@ public class PokemonTest {
 
     @Test
     public void EvolutionFlorizzarreMegaPokemon() {
-        FlorizarreAdaptor PokemonInitial = new FlorizarreAdaptor(); 
+        FlorizarreAdapter PokemonInitial = new FlorizarreAdapter(); 
         Pokemon EvolutionPokemon = PokemonInitial.evoluer();
         assertTrue(EvolutionPokemon instanceof MegaPokemon);
     }

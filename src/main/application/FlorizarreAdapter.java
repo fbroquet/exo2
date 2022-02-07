@@ -2,8 +2,8 @@ package application;
 
 import application.Librairie.*;
 
-//Utilisation du pattern Adaptor
-public class FlorizarreAdaptor extends Florizarre implements IMegaEvoluable{
+//Utilisation du pattern Adapter
+public class FlorizarreAdapter extends Florizarre implements IMegaEvoluable{
     
     @Override
     public MegaPokemon evoluer() {
