@@ -35,16 +35,38 @@ public class PokemonTest {
         assertTrue(EvolutionPokemon instanceof MegaPokemon);
     }
 
+    @Test
+    public void TestTypes() {
+        //bulbizarre
+        Bulbizarre bulbizarre = new Bulbizarre(); 
+        assertEquals(2, bulbizarre.getTypes().size());
+        assertEquals(Type.Plante, bulbizarre.getTypes().get(0));
+        assertEquals(Type.Poison, bulbizarre.getTypes().get(1));
+
+        //herbizarre
+        Herbizarre herbizarre = new Herbizarre(); 
+        assertEquals(2, herbizarre.getTypes().size());
+        assertEquals(Type.Plante, herbizarre.getTypes().get(0));
+        assertEquals(Type.Poison, herbizarre.getTypes().get(1));
+
+        //florizarre
+
+        Florizarre florizarre = new Florizarre(); 
+        assertEquals(2, florizarre.getTypes().size());
+        assertEquals(Type.Plante, florizarre.getTypes().get(0));
+        assertEquals(Type.Poison, florizarre.getTypes().get(1));
+    }
+
 
     @Test
-    public void TestPokemonObscur() {
+    public void TestPokemonObscurProxy() {
 
         //Test bulbizarre
         Pokemon PokemonInitial = new Bulbizarre(); 
         //Test des 2 types
         assertEquals(Type.Plante, PokemonInitial.getTypes().get(0));
         assertEquals(Type.Poison, PokemonInitial.getTypes().get(1));
-        PokemonObscur BulbizarreObscur = new PokemonObscur(PokemonInitial);
+        PokemonObscurProxy BulbizarreObscur = new PokemonObscurProxy(PokemonInitial);
         //Test du type Poison
         assertEquals(Type.Poison, BulbizarreObscur.getTypes().get(0));
         //Test purifier
@@ -58,7 +80,7 @@ public class PokemonTest {
         //Test des 2 types
         assertEquals(Type.Plante, PokemonInitial.getTypes().get(0));
         assertEquals(Type.Poison, PokemonInitial.getTypes().get(1));
-        PokemonObscur HerbizarreObscur = new PokemonObscur(PokemonInitial);
+        PokemonObscurProxy HerbizarreObscur = new PokemonObscurProxy(PokemonInitial);
         //Test du type Poison
         assertEquals(Type.Poison, HerbizarreObscur.getTypes().get(0));
         //Test purifier
@@ -72,7 +94,7 @@ public class PokemonTest {
         //Test des 2 types
         assertEquals(Type.Plante, PokemonInitial.getTypes().get(0));
         assertEquals(Type.Poison, PokemonInitial.getTypes().get(1));
-        PokemonObscur FlorizarreObscur = new PokemonObscur(PokemonInitial);
+        PokemonObscurProxy FlorizarreObscur = new PokemonObscurProxy(PokemonInitial);
         //Test du type Poison
         assertEquals(Type.Poison, FlorizarreObscur.getTypes().get(0));
        //Test purifier
@@ -80,21 +102,52 @@ public class PokemonTest {
        //Test des 2 types après purification
        assertEquals(Type.Plante, Florizarre.getTypes().get(0));
        assertEquals(Type.Poison, Florizarre.getTypes().get(1));
+    }
 
-        //test megaFlorizarre
-        PokemonInitial = new MegaFlorizarre();
+    @Test
+    public void TestPokemonObscurDecorator() {
+
+        //Test bulbizarre
+        Pokemon PokemonInitial = new Bulbizarre(); 
         //Test des 2 types
         assertEquals(Type.Plante, PokemonInitial.getTypes().get(0));
         assertEquals(Type.Poison, PokemonInitial.getTypes().get(1));
-        PokemonObscur MegaFlorizarreObscur = new PokemonObscur(PokemonInitial);
+        PokemonObscurDecorator BulbizarreObscur = new PokemonObscurDecorator(PokemonInitial);
         //Test du type Poison
-        assertEquals(Type.Poison, MegaFlorizarreObscur.getTypes().get(0));
-       //Test purifier
-       Pokemon MegaFlorizarre  = MegaFlorizarreObscur.purifier();
-       //Test des 2 types après purification
-       assertEquals(Type.Plante, MegaFlorizarre.getTypes().get(0));
-       assertEquals(Type.Poison, MegaFlorizarre.getTypes().get(1));
+        assertEquals(Type.Poison, BulbizarreObscur.getTypes().get(0));
+        //Test purifier
+        Pokemon Bulbizarre  = BulbizarreObscur.purifier();
+        //Test des 2 types après purification
+        assertEquals(Type.Plante, Bulbizarre.getTypes().get(0));
+        assertEquals(Type.Poison, Bulbizarre.getTypes().get(1));
 
+        //Test Herbizarre
+        PokemonInitial = new Herbizarre();
+        //Test des 2 types
+        assertEquals(Type.Plante, PokemonInitial.getTypes().get(0));
+        assertEquals(Type.Poison, PokemonInitial.getTypes().get(1));
+        PokemonObscurDecorator HerbizarreObscur = new PokemonObscurDecorator(PokemonInitial);
+        //Test du type Poison
+        assertEquals(Type.Poison, HerbizarreObscur.getTypes().get(0));
+        //Test purifier
+        Pokemon Herbizarre  = HerbizarreObscur.purifier();
+        //Test des 2 types après purification
+        assertEquals(Type.Plante, Herbizarre.getTypes().get(0));
+        assertEquals(Type.Poison, Herbizarre.getTypes().get(1));
+
+        //Test florizarre
+        PokemonInitial = new Florizarre();
+        //Test des 2 types
+        assertEquals(Type.Plante, PokemonInitial.getTypes().get(0));
+        assertEquals(Type.Poison, PokemonInitial.getTypes().get(1));
+        PokemonObscurDecorator FlorizarreObscur = new PokemonObscurDecorator(PokemonInitial);
+        //Test du type Poison
+        assertEquals(Type.Poison, FlorizarreObscur.getTypes().get(0));
+       //Test purifier
+       Pokemon Florizarre  = FlorizarreObscur.purifier();
+       //Test des 2 types après purification
+       assertEquals(Type.Plante, Florizarre.getTypes().get(0));
+       assertEquals(Type.Poison, Florizarre.getTypes().get(1));
     }
 
 }

@@ -36,15 +36,23 @@ class MegaFlorizarre {
 class FlorizarreAdapter {
 }
 
-abstract class ObscurDecorator{
-    - PokemonClassique :Pokemon
+interface IObscurDecorator {
     purifier() : Pokemon
+}
+
+class PokemonObscurProxy{
+    - PokemonClassique :Pokemon
+    + purifier() : Pokemon
+    + getTypes(Type[]) : List[]
     - TypesObsur(Type[]) : List[]
     
 }
 
-class PokemonObscur {
-    PokemonObscur(Pokemon)
+class PokemonObscurDecorator{
+    - PokemonClassique :Pokemon
+    + getTypes(Type[]) : List[]
+    - TypesObsur(Type[]) : List[]
+    
 }
 
 Pokemon ..|> IEvoluable : uses
@@ -54,7 +62,6 @@ Pokemon <|-- Herbizarre
 Pokemon <|-- Florizarre
 IEvoluable <|.. Bulbizarre
 IEvoluable <|.. Herbizarre
-IEvoluable <|.. Florizarre
 
 MegaPokemon ..|> IMegaEvoluable : uses
 Pokemon <|-- MegaPokemon
@@ -62,8 +69,10 @@ IMegaEvoluable <|..FlorizarreAdapter
 Florizarre <|--FlorizarreAdapter
 MegaPokemon <|--MegaFlorizarre
 
-Pokemon <|--ObscurDecorator
-ObscurDecorator <|--PokemonObscur
+Pokemon <|--PokemonObscurProxy : uses
+
+Pokemon <|--IObscurDecorator : uses
+IObscurDecorator <|..PokemonObscurDecorator
 
 
 @enduml

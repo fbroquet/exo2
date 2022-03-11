@@ -4,12 +4,12 @@ import java.util.List;
 import application.Librairie.*;
 import java.util.ArrayList;
 
-//Pattern decorator
-public abstract class ObscurDecorator extends Pokemon {
+//Pattern Proxy
+public class PokemonObscurProxy extends Pokemon {
 
     private Pokemon PokemonClassique;
 
-    public ObscurDecorator(Pokemon Pokemon) {
+    public PokemonObscurProxy(Pokemon Pokemon) {
         super(TypesObsur(Pokemon.getTypes()));
         this.PokemonClassique = Pokemon; 
     }
